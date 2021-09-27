@@ -1220,6 +1220,11 @@
           ...{filteredListItems.length - maxItemsToShowInList} results not shown
         </div>
       {/if}
+      {#if create}
+        <div class="autocomplete-list-item-create" on:click={selectItem}>
+          <slot name="create" {createText}>{createText}</slot>
+        </div>
+      {/if}
     {:else if loading && loadingText}
       <div class="autocomplete-list-item-loading">
         <slot name="loading" {loadingText}>{loadingText}</slot>
