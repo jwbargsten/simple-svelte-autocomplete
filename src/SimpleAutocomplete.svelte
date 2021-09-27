@@ -550,11 +550,11 @@
     return true;
   }
 
-  function selectItem() {
+  function selectItem(shouldCreate) {
     if (debug) {
       console.log("selectItem", highlightIndex);
     }
-    const listItem = filteredListItems[highlightIndex];
+    const listItem = shouldCreate ? undefined : filteredListItems[highlightIndex];
     if (selectListItem(listItem)) {
       close();
       if (multiple) {
@@ -1221,7 +1221,7 @@
         </div>
       {/if}
       {#if create}
-        <div class="autocomplete-list-item-create" on:click={selectItem}>
+        <div class="autocomplete-list-item-create" on:click={() => selectItem(true)}>
           <slot name="create" {createText}>{createText}</slot>
         </div>
       {/if}
